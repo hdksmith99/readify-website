@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Books – Readify</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .explorer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .book-info {
+            padding: 1.5rem;
+        }
+
+        .book-info h3 {
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .book-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Readify</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explorer.html">Explore Books</a></li>
+                <li><a href="progress.html">Reading Progress</a></li>
+                <li><a href="recommender.html">Get Recommendation</a></li>
+                <li><a href="flow.html">Cozy Reading</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="explorer-grid" id="book-grid">
+            <!-- Books will be injected here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Readify – Made for book lovers</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('book-grid');
+            books.forEach(book => {
+                const card = document.createElement('div');
+                card.className = 'book-card';
+                card.innerHTML = `
+          <img src="${book.image}" alt="${book.title}" onerror="this.src='https://via.placeholder.com/250x350?text=No+Cover'">
+          <div class="book-info">
+            <h3>${book.title}</h3>
+            <p>By ${book.author}</p>
+            <p><strong>${book.genre}</strong></p>
+          </div>
+        `;
+                grid.appendChild(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

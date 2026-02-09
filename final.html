@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Readify – Discover Your Next Great Read</title>
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Readify</div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explorer.html">Explore Books</a></li>
+        <li><a href="progress.html">Reading Progress</a></li>
+        <li><a href="recommender.html">Get Recommendation</a></li>
+        <li><a href="flow.html">Cozy Reading</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+
+      <div class="hamburger">☰</div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Stories that stay with you</h1>
+        <p id="rotating-quote"></p>
+      </div>
+
+      <div class="hero-right">
+        <div class="author-day-card">
+          <h3>Author of the Day</h3>
+          <p id="author-name">—</p>
+          <p id="author-blurb">Selects a different featured author every day.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section">
+      <h2>Stay in the story</h2>
+      <form id="newsletter-form" class="newsletter-form">
+        <input type="email" id="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </div>
+    <p>© 2025 Readify – Made for book lovers</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+
+    // Home-page specific logic
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Rotating quote
+
+      const quoteEl = document.getElementById("rotating-quote");
+      let quoteIndex = Math.floor(Math.random() * quotes.length);
+
+      function showNextQuote() {
+        quoteEl.style.opacity = "0";
+        setTimeout(() => {
+          quoteEl.textContent = `“${quotes[quoteIndex]}”`;
+          quoteEl.style.opacity = "0.95";
+          quoteIndex = (quoteIndex + 1) % quotes.length;
+        }, 800);
+      }
+
+      showNextQuote();
+      setInterval(showNextQuote, 6500);
+
+
+      // Author of the Day
+
+      const todaysAuthor = getAuthorOfTheDay();
+      document.getElementById("author-name").textContent = todaysAuthor.name;
+      document.getElementById("author-blurb").textContent = todaysAuthor.blurb;
+
+      // Newsletter
+
+      document.getElementById("newsletter-form").addEventListener("submit", e => {
+        e.preventDefault();
+        const email = document.getElementById("email").value.trim();
+        if (email) {
+          localStorage.setItem("readify_newsletter", email);
+          alert("Thank you! You've been added to the Readify newsletter.");
+          e.target.reset();
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

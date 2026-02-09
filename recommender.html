@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Get Recommendation – Readify</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .recommender-card {
+            max-width: 500px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .rec-btn {
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        #result {
+            margin-top: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Readify</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explorer.html">Explore Books</a></li>
+                <li><a href="progress.html">Reading Progress</a></li>
+                <li><a href="recommender.html">Get Recommendation</a></li>
+                <li><a href="flow.html">Cozy Reading</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+    <main>
+        <div class="recommender-card">
+            <h2>Not sure what to read next?</h2>
+            <p>Let our librarian help you find the perfect match.</p>
+            <button class="rec-btn" onclick="getRec()">Surprise Me!</button>
+            <div id="result"></div>
+        </div>
+    </main>
+    <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+    <script>
+        function getRec() {
+            const book = books[Math.floor(Math.random() * books.length)];
+            document.getElementById('result').innerHTML = `You should read: <br><strong style="font-size: 1.5rem">${book.title}</strong><br>by ${book.author}`;
+        }
+    </script>
+</body>
+
+</html>

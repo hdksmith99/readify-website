@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading Progress – Readify</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .progress-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+
+        .book-progress {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 12px;
+            background: #eee;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-accent);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Readify</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explorer.html">Explore Books</a></li>
+                <li><a href="progress.html">Reading Progress</a></li>
+                <li><a href="recommender.html">Get Recommendation</a></li>
+                <li><a href="flow.html">Cozy Reading</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </nav>
+    </header>
+    <main class="progress-container">
+        <h2>Your Reading Progress</h2>
+        <div class="book-progress">
+            <div><strong>The Hobbit</strong></div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%"></div>
+            </div>
+            <span>75%</span>
+        </div>
+        <div class="book-progress">
+            <div><strong>Dune</strong></div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 30%"></div>
+            </div>
+            <span>30%</span>
+        </div>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
